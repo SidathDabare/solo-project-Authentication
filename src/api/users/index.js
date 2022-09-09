@@ -3,7 +3,7 @@
 import express from "express"
 import createError from "http-errors"
 import UserModel from "./model.js"
-import { basicAuthMiddleware } from "../../lib/auth/basic.js"
+
 import { createAccessToken } from "../../lib/auth/tools.js"
 import { JWTAuthMiddleware } from "../../lib/auth/token.js"
 
@@ -106,7 +106,7 @@ usersRouter.delete("/:userId", JWTAuthMiddleware, async (req, res, next) => {
   }
 })
 
-usersRouter.post("/register", JWTAuthMiddleware, async (req, res, next) => {
+usersRouter.post("/register", async (req, res, next) => {
   try {
     const user = new UserModel(req.body)
     const { _id } = await user.save()

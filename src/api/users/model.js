@@ -11,7 +11,7 @@ const UserSchema = new Schema(
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["User", "Admin"], default: "User" },
+    role: { type: String, enum: ["Host", "Guest"], default: "Guest" },
   },
   {
     timestamps: true,
@@ -57,4 +57,4 @@ UserSchema.static("checkCredentials", async function (email, plainPassword) {
   }
 })
 
-export default model("User", UserSchema)
+export default model("Users", UserSchema)

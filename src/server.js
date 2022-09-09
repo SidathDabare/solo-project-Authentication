@@ -13,7 +13,7 @@ import {
 } from "./errorHandlers.js"
 
 import usersRouter from "./api/users/index.js"
-import blogPostsRouter from "./api/blogPosts/index.js"
+import accomadationRouter from "./api/accomadation/index.js"
 
 const server = express()
 const port = process.env.PORT || 3001
@@ -21,7 +21,7 @@ const port = process.env.PORT || 3001
 server.use(cors())
 server.use(express.json())
 
-server.use("/posts", blogPostsRouter)
+server.use("/accomadation", accomadationRouter)
 server.use("/users", usersRouter)
 
 server.use(unauthorizedErrorHandler)
