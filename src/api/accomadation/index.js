@@ -27,11 +27,10 @@ accomadationRouter.post(
 
 accomadationRouter.get("/", async (req, res, next) => {
   try {
-    const blogPosts = await AccomadationModel.find()
-    //       .populate({
-    //   path: "Users",
-    //   options: { strictPopulate: false },
-    // })
+    const blogPosts = await AccomadationModel.find().populate({
+      path: "user",
+      //   options: { strictPopulate: false },
+    })
 
     res.send(blogPosts)
   } catch (error) {

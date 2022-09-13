@@ -2,6 +2,13 @@
 
 import mongoose from "mongoose"
 
+export const forbiddenErrorHandler = (err, req, res, next) => {
+  if (err.status === 403) {
+    res.status(403).send({ success: false, message: err.message })
+  } else {
+    next(err)
+  }
+}
 export const unauthorizedErrorHandler = (err, req, res, next) => {
   if (err.status === 401) {
     res.status(401).send({ success: false, message: err.message })
