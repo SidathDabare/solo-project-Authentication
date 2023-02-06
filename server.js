@@ -10,13 +10,15 @@ import {
   genericErrorHandler,
   notFoundHandler,
   unauthorizedErrorHandler,
-} from "./errorHandlers.js"
+} from "./src/errorHandlers.js"
 
-import usersRouter from "./api/users/index.js"
-import accomadationRouter from "./api/accomadation/index.js"
+import usersRouter from "./src/api/users/index.js"
+import accomadationRouter from "./src/api/accomadation/index.js"
+import dotenv from "dotenv"
 
 const server = express()
 const port = process.env.PORT || 3001
+dotenv.config()
 
 server.use(cors())
 server.use(express.json())
